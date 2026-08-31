@@ -1,0 +1,20 @@
+version: '3' 
+services: 
+  frontend: 
+    build: ./frontend 
+    ports: 
+      - "3000:3000" 
+  backend: 
+    build: ./backend 
+    ports: 
+      - "5000:5000" 
+    environment: 
+      - MONGO_URI=mongodb://mongo:27017/car-dealership 
+  mongo: 
+    image: mongo:latest 
+    ports: 
+      - "27017:27017" 
+  ml-api: 
+    build: ./ml/deployment 
+    ports: 
+      - "8000:8000" 
